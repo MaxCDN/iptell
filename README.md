@@ -38,7 +38,7 @@ Basically you'll need to perform the following steps:
 2. Add a git remote using `git add remote heroku repourl`. You can get that repourl through Heroku's user interface
 3. Whenever you wish to deploy, execute `git push heroku master`. This will trigger the init sequence.
 
-The project depends on a couple of environment variables. See `/config/index.js` for exact names. You can set these using `heroku config:set FOO=bar`. In order to enable production mode (more caching etc.), use `heroku config:set NODE\_ENV=production`
+The project depends on a couple of environment variables. See `/config/index.js` for exact names. You can set these using `heroku config:set FOO=bar`. In order to enable production mode (more caching etc.), use `heroku config:set NODE_ENV=production`
 
 ## Service AKA:
 
