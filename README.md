@@ -11,6 +11,7 @@ We bootstrapped this very quickly and will make it open to add hostnames (throug
 ### v1
 
 The API has uses the following schema:
+The URL is: http://api.iptell.io
 
 ```
 GET /v1/location?host=hostname
