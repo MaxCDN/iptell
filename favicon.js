@@ -1,6 +1,7 @@
 var providers = {
     'Amazon': 'http://www.amazon.com/favicon.ico',
-    'Unified Layer': 'http://www.bluehost.com/favicon.ico'
+    'Unified Layer': 'http://www.bluehost.com/favicon.ico',
+    'SingleHop': 'http://www.singlehop.com/favicon.ico'
     // TODO: add more
 };
 
