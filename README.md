@@ -12,9 +12,9 @@ Sample:
 request: cdn-tools.com
 
 response: 
-ip:  66.147.242.187
-host: BlueHost
-Favicon: http://www.centriforge.com/rulesenginelite.com/img/hosts/bluehost.com.gif
+* ip:  66.147.242.187
+* host: BlueHost
+* Favicon: http://www.centriforge.com/rulesenginelite.com/img/hosts/bluehost.com.gif
 
 
 
