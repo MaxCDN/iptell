@@ -8,6 +8,8 @@ The first application is to give an IP or hostname and return the hosting provid
 
 Service AKA:
 ======
-iptelligence.io
-iptell.io
-iptel.io
+* iptelligence.io
+* iptell.io
+* iptel.io
+
+(all registered with: iwantmyname.com)
