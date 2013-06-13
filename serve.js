@@ -15,6 +15,8 @@ serve();
 function serve(err) {
     if(err) return console.error(err);
 
+    var prefix = 'v1';
+
     var app = express();
 
     app.configure(function() {
@@ -32,7 +34,7 @@ function serve(err) {
         app.use(express.errorHandler());
     });
 
-    app.get('/location', function(request, response) {
+    app.get( '/' + prefix + '/location', function(request, response) {
         var query = request.query;
 
         if(query.host) {
