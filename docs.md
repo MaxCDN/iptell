@@ -9,10 +9,8 @@ permalink: docs/
 
 The API has uses the following schema:
 
-{% highlight %}
-GET /v1/location?host=hostname
-GET /v1/location?ip=8.8.8.8
-{% endhighlight %}
+* GET /v1/location?host=hostname
+* GET /v1/location?ip=8.8.8.8
 
 If the request is successful, you should receive something like this:
 
