@@ -1,0 +1,6 @@
+port: 4000
+auto: true
+safe: true
+server: true
+pygments: true
+exclude: ['README.md']
