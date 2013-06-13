@@ -2,6 +2,8 @@
 var express = require('express');
 var geoip = require('geoipcity');
 
+var dns = require('dns');
+
 var config = require('./config');
 var favicon = require('./favicon');
 
@@ -31,14 +33,26 @@ function serve(err) {
     });
 
     app.get('/location', function(request, response) {
-        geoLookup(request.query.ip, function(err, d) {
-            if(err) return response.send(400);
+        var query = request.query;
 
-            response.json({
-                location: d,
-                favicon: favicon(d)
+        if(query.host) {
+            hostLookup(query.host, function(err, d) {
+                return geoResponse(err? query.ip: d[0]);
             });
-        });
+        }
+        else if(query.ip) geoResponse(query.ip);
+        else response.send(400);
+
+        function geoResponse(ip) {
+            geoLookup(ip, function(err, d) {
+                if(err) return response.send(400);
+
+                response.json({
+                    location: d,
+                    favicon: favicon(d)
+                });
+            });
+        }
     });
     process.on('exit', terminator);
 
@@ -54,8 +68,14 @@ function serve(err) {
     });
 }
 
+function hostLookup(host, cb) {
+    if(!host) return cb('No host provided!');
+
+    dns.resolve(host, cb);
+}
+
 function geoLookup(ip, cb) {
-    if(!ip) return;
+    if(!ip) return cb('No ip provided!');
 
     geoip.lookup(ip, function(err, data) {
         if(err) return cb(err);
