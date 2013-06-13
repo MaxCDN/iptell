@@ -3,6 +3,7 @@ var express = require('express');
 var geoip = require('geoipcity');
 
 var config = require('./config');
+var favicon = require('./favicon');
 
 
 geoip.settings.license = config.geoipcity;
@@ -33,7 +34,10 @@ function serve(err) {
         geoLookup(request.query.ip, function(err, d) {
             if(err) return response.send(400);
 
-            response.json({location: d});
+            response.json({
+                location: d,
+                favicon: favicon(d)
+            });
         });
     });
     process.on('exit', terminator);
