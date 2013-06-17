@@ -73,7 +73,7 @@ function serve(err) {
 
         if(!ip) return response.send(400);
 
-        rbl([], ip, function(err, blacklisted) {
+        rbl(ip, config.rbls, function(err, blacklisted) {
             if(err) return response.send(400);
 
             response.json({

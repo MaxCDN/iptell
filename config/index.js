@@ -1,5 +1,6 @@
 var config;
 
+
 try {
     config = require('./config');
 }
@@ -11,5 +12,7 @@ catch(e) {
         geoipcity: env.GEOIPCITY
     };
 }
+
+config.rbls = require('./rbls');
 
 module.exports = config;
