@@ -76,9 +76,7 @@ function serve(err) {
         rbl(ip, config.rbls, function(err, blacklisted) {
             if(err) return response.send(400);
 
-            response.json({
-                blacklisted: blacklisted
-            });
+            response.json(blacklisted);
         });
     });
 
