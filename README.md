@@ -33,7 +33,7 @@ If the request is successful, you should receive something like this:
 #### IP
 
 ```
-GET /v1/<ip>
+GET /v1/ip
 ```
 
 If the request is successful, you should receive something like this:
@@ -47,7 +47,7 @@ If the request is successful, you should receive something like this:
 #### RBL Blacklists
 
 ```
-GET /v1/blacklisted/<ip>
+GET /v1/blacklisted/{ip}
 ```
 
 If the request is successful, you should receive something like this:
@@ -61,7 +61,7 @@ If the request is successful, you should receive something like this:
 ]
 ```
 
-Of course it is more likely that you will simply receive and empty list.
+Of course it is more likely that you will simply receive an empty list.
 
 ## Hosting
 
