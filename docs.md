@@ -36,3 +36,20 @@ If the request is successful, you should receive something like this:
   "ip": "127.0.0.1"
 }
 {% endhighlight %}
+
+#### RBL Blacklists
+
+* GET /v1/blacklisted/{ip}
+
+If the request is successful, you should receive something like this:
+
+{% highlight json %}
+[
+  {
+    "name": "SpamCop",
+    "dns": "bl.spamcop.net"
+  }
+]
+{% endhighlight %}
+
+Of course it is more likely that you will simply receive an empty list.
