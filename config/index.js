@@ -1,17 +1,14 @@
-var config;
+var parseEnv = require('parse-env');
 
+var configTemplate = require('./config.template');
+var config;
 
 try {
     config = require('./config');
 }
-catch(e) {
-    var env = process.env;
+catch(e) {}
 
-    config = {
-        port: env.PORT || 8000,
-        geoipcity: env.GEOIPCITY
-    };
-}
+config = parseEnv(process.env, configTemplate, config);
 
 config.rbls = require('./rbls');
 
