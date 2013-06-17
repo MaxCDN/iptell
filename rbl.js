@@ -16,8 +16,8 @@ function blacklistedTargets(ip, targets, cb) {
 function blacklistedTarget(ip, target, cb) {
     dns.resolve(reverseIp(ip) + '.' + target, function(err, data) {
         if(err) {
-            if(err.errno == 'ENOTFOUND') return cb(null, false);
-            else return cb(err);
+            // errors in case there is no match or the service is down
+            return cb(null, false);
         }
 
         cb(null, true);
