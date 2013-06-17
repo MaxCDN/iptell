@@ -33,7 +33,7 @@ If the request is successful, you should receive something like this:
 #### IP
 
 ```
-GET /v1/ip
+GET /v1/<ip>
 ```
 
 If the request is successful, you should receive something like this:
@@ -43,6 +43,25 @@ If the request is successful, you should receive something like this:
   "ip": "127.0.0.1"
 }
 ```
+
+#### RBL Blacklists
+
+```
+GET /v1/blacklisted/<ip>
+```
+
+If the request is successful, you should receive something like this:
+
+```json
+[
+  {
+    "name": "SpamCop",
+    "dns": "bl.spamcop.net"
+  }
+]
+```
+
+Of course it is more likely that you will simply receive and empty list.
 
 ## Hosting
 
