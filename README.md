@@ -10,8 +10,9 @@ We bootstrapped this very quickly and will make it open to add hostnames (throug
 
 ### v1
 
-The API has uses the following schema:
-The URL is: http://api.iptell.io
+The URL: http://api.iptell.io
+
+### Location
 
 ```
 GET /v1/location?host=hostname
@@ -20,7 +21,7 @@ GET /v1/location?ip=8.8.8.8
 
 If the request is successful, you should receive something like this:
 
-```
+```json
 {
   "location": "some location",
   "favicon": "some url"
@@ -28,6 +29,20 @@ If the request is successful, you should receive something like this:
 ```
 
 `favicon` is optional and may not be available.
+
+#### IP
+
+```
+GET /v1/ip
+```
+
+If the request is successful, you should receive something like this:
+
+```json
+{
+  "ip": "127.0.0.1"
+}
+```
 
 ## Hosting
 

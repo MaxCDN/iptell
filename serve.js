@@ -56,6 +56,17 @@ function serve(err) {
             });
         }
     });
+
+    app.get('/' + prefix + '/ip', function(request, response) {
+        var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
+
+        if(!ip) return response.send(400);
+
+        response.json({
+            ip: ip
+        });
+    });
+
     process.on('exit', terminator);
 
     ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT', 'SIGBUS',
