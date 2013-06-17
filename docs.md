@@ -7,7 +7,7 @@ permalink: docs/
 
 ### v1
 
-The API has uses the following schema:
+The API is located at [http://api.iptell.io](http://api.iptell.io) and uses the following schema:
 
 * GET /v1/location?host=hostname
 * GET /v1/location?ip=8.8.8.8
