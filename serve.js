@@ -6,6 +6,7 @@ var dns = require('dns');
 
 var config = require('./config');
 var favicon = require('./favicon');
+var rbl = require('./rbl');
 
 
 geoip.settings.license = config.geoipcity;
@@ -64,6 +65,20 @@ function serve(err) {
 
         response.json({
             ip: ip
+        });
+    });
+
+    app.get('/' + prefix + '/blacklisted/:ip', function(request, response) {
+        var ip = request.params.ip;
+
+        if(!ip) return response.send(400);
+
+        rbl([], ip, function(err, blacklisted) {
+            if(err) return response.send(400);
+
+            response.json({
+                blacklisted: blacklisted
+            });
         });
     });
 
