@@ -1,23 +1,21 @@
 {
-    "name": "iptoloc",
-    "private": true,
-    "description": "",
-    "author": "",
-    "version": "0.1.0",
-
-    "engines": {
-        "node": ">= 0.6.0",
-        "npm": ">= 1.0.0"
-    },
-
-    "dependencies": {
-        "express": "3.1.0",
-        "geoipcity": "3.1.3",
-        "async": "0.2.9",
-        "parse-env": "0.1.2"
-    },
-
-    "scripts": {
-        "start": "node serve.js"
-    }
+  "name": "iptoloc",
+  "private": true,
+  "description": "",
+  "author": "",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "3.3.4",
+    "geoipcity": "3.1.3",
+    "async": "0.2.9",
+    "parse-env": "0.1.3"
+  },
+  "scripts": {
+    "start": "node serve.js",
+    "test": "node tests.js"
+  }
 }
