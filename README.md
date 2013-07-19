@@ -75,6 +75,13 @@ Basically you'll need to perform the following steps:
 
 The project depends on a couple of environment variables. See `/config/index.js` for exact names. You can set these using `heroku config:set FOO=bar`. In order to enable production mode (more caching etc.), use `heroku config:set NODE_ENV=production`
 
+## Testing
+
+1. npm start
+2. npm test
+
+The tests won't run unless the server is running so remember to that before executing the tests! The tests use Jasmine as a test runner. If you don't have that installed yet, execute `npm install -g jasmine-node`.
+
 ## Service AKA:
 
 * iptelligence.io
