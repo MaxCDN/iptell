@@ -5,9 +5,7 @@ var geoip = require('geoipcity');
 var dns = require('dns');
 
 var config = require('./config');
-var rbl = require('./rbl');
-var geo = require('./geo')(config.geoipcity);
-var host = require('./host');
+var routes = require('./routes');
 
 
 serve();
@@ -34,39 +32,9 @@ function serve(err) {
         app.use(express.errorHandler());
     });
 
-    app.get( '/' + prefix + '/location', function(request, response) {
-        var query = request.query;
-
-        if(query.host) {
-            host(query.host, function(err, d) {
-                return geo(response, err? query.ip: d[0]);
-            });
-        }
-        else if(query.ip) geo(response, query.ip);
-        else response.send(400);
-    });
-
-    app.get('/' + prefix + '/ip', function(request, response) {
-        var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-
-        if(!ip) return response.send(400);
-
-        response.json({
-            ip: ip
-        });
-    });
-
-    app.get('/' + prefix + '/blacklisted/:ip', function(request, response) {
-        var ip = request.params.ip;
-
-        if(!ip) return response.send(400);
-
-        rbl(ip, config.rbls, function(err, blacklisted) {
-            if(err) return response.send(400);
-
-            response.json(blacklisted);
-        });
-    });
+    app.get( '/' + prefix + '/location', routes.location.get);
+    app.get('/' + prefix + '/ip', routes.ip.get);
+    app.get('/' + prefix + '/blacklisted/:ip', routes.blacklisted.get);
 
     process.on('exit', terminator);
 
