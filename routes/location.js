@@ -1,6 +1,7 @@
 var config = require('../config');
-var geo = require('../geo')(config.geoipcity);
-var host = require('../host');
+var utils = require('../utils');
+var geo = utils.geo(config.geoipcity);
+var host = utils.host;
 
 
 module.exports = {

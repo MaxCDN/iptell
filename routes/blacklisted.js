@@ -1,5 +1,5 @@
 var config = require('../config');
-var rbl = require('../rbl');
+var rbl = require('../utils').rbl;
 
 
 module.exports = {

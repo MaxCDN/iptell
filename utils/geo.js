@@ -1,6 +1,5 @@
 var geoip = require('geoipcity');
 
-var config = require('./config');
 var favicon = require('./favicon');
 
 

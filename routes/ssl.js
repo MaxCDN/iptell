@@ -1,4 +1,4 @@
-var ssl = require('../ssl');
+var ssl = require('../utils').ssl;
 
 
 module.exports = {
