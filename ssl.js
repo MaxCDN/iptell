@@ -3,6 +3,7 @@ var extend = require('util')._extend;
 
 var async = require('async');
 var openssl = require('openssl-wrapper');
+var request = require('request');
 var temp = require('temp');
 var x509 = require('x509');
 
@@ -10,17 +11,17 @@ var x509 = require('x509');
 exports.connect = connect;
 
 function connect(host, cb) {
-    console.log(host + ':443')
     openssl.exec('s_client', {connect: host + ':443'}, function(err, buffer) {
         var d = buffer.toString().split('\n---\n').filter(id);
 
         if(d) {
             async.map([
+                server,
                 certificateChain,
                 certificate,
                 info
             ], function(fn, cb) {
-                fn(d, cb);
+                fn(host, d, cb);
             }, function(err, d) {
                 cb(err, toObject(d));
             });
@@ -38,7 +39,17 @@ function toObject(arr) {
     return ret;
 }
 
-function certificateChain(d, cb) {
+function server(host, d, cb) {
+    request('http://' + host, function(err, response) {
+        if(err) return cb(err);
+
+        cb(null, {
+            server: response.headers.server
+        });
+    })
+}
+
+function certificateChain(host, d, cb) {
     var ret = [];
 
     d[1].split('\n').slice(1).forEach(function(v) {
@@ -59,7 +70,7 @@ function certificateChain(d, cb) {
     });
 }
 
-function certificate(d, cb) {
+function certificate(host, d, cb) {
     var parts = d[2].split('\n');
     var certData = parts.slice(1, parts.length - 2).join('\n');
 
@@ -78,7 +89,7 @@ function certificate(d, cb) {
     });
 }
 
-function info(d, cb) {
+function info(host, d, cb) {
     var ret = d[d.length - 1].split('SSL-Session:')[0].split('\n');
 
     cb(null, {
