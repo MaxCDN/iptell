@@ -5,11 +5,10 @@ var geoip = require('geoipcity');
 var dns = require('dns');
 
 var config = require('./config');
-var favicon = require('./favicon');
 var rbl = require('./rbl');
+var geo = require('./geo')(config.geoipcity);
 
 
-geoip.settings.license = config.geoipcity;
 
 serve();
 
@@ -40,22 +39,11 @@ function serve(err) {
 
         if(query.host) {
             hostLookup(query.host, function(err, d) {
-                return geoResponse(err? query.ip: d[0]);
+                return geo(response, err? query.ip: d[0]);
             });
         }
-        else if(query.ip) geoResponse(query.ip);
+        else if(query.ip) geo(response, query.ip);
         else response.send(400);
-
-        function geoResponse(ip) {
-            geoLookup(ip, function(err, d) {
-                if(err) return response.send(400);
-
-                response.json({
-                    location: d,
-                    favicon: favicon(d)
-                });
-            });
-        }
     });
 
     app.get('/' + prefix + '/ip', function(request, response) {
@@ -98,16 +86,6 @@ function hostLookup(host, cb) {
     if(!host) return cb('No host provided!');
 
     dns.resolve(host, cb);
-}
-
-function geoLookup(ip, cb) {
-    if(!ip) return cb('No ip provided!');
-
-    geoip.lookup(ip, function(err, data) {
-        if(err) return cb(err);
-
-        cb(null, data.org);
-    });
 }
 
 function terminator(sig) {
