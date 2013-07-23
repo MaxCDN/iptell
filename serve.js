@@ -7,7 +7,7 @@ var dns = require('dns');
 var config = require('./config');
 var rbl = require('./rbl');
 var geo = require('./geo')(config.geoipcity);
-
+var host = require('./host');
 
 
 serve();
@@ -38,7 +38,7 @@ function serve(err) {
         var query = request.query;
 
         if(query.host) {
-            hostLookup(query.host, function(err, d) {
+            host(query.host, function(err, d) {
                 return geo(response, err? query.ip: d[0]);
             });
         }
@@ -80,12 +80,6 @@ function serve(err) {
     app.listen(port, function() {
         console.log('%s: Node (version: %s) %s started on %d ...', Date(Date.now() ), process.version, process.argv[1], port);
     });
-}
-
-function hostLookup(host, cb) {
-    if(!host) return cb('No host provided!');
-
-    dns.resolve(host, cb);
 }
 
 function terminator(sig) {
