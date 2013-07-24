@@ -1,10 +1,8 @@
-var fs = require('fs');
 var extend = require('util')._extend;
 
 var async = require('async');
 var openssl = require('openssl-wrapper');
 var request = require('request');
-var temp = require('temp');
 var x509 = require('x509');
 
 
@@ -26,7 +24,7 @@ function connect(host, cb) {
                 cb(err, toObject(d));
             });
         }
-    })
+    });
 }
 
 function toObject(arr) {
@@ -46,7 +44,7 @@ function server(host, d, cb) {
         cb(null, {
             server: response.headers.server
         });
-    })
+    });
 }
 
 function certificateChain(host, d, cb) {
@@ -74,18 +72,8 @@ function certificate(host, d, cb) {
     var parts = d[2].split('\n');
     var certData = parts.slice(1, parts.length - 2).join('\n');
 
-    temp.open('cert', function(err, cert) {
-        if(err) return cb(err);
-
-        fs.writeFile(cert.path, certData, function(err) {
-            if(err) return cb(err);
-
-            fs.close(cert.fd, function(err) {
-                cb(null, {
-                    certificate: x509.parseCert(cert.path)
-                });
-            });
-        })
+    cb(null, {
+        certificate: x509.parseCert(certData)
     });
 }
 

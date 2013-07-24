@@ -4,7 +4,6 @@ var VERSION = require('./package.json').version;
 
 var program = require('commander');
 var async = require('async');
-var temp = require('temp');
 var x509 = require('x509');
 
 
@@ -24,16 +23,7 @@ function main() {
         filter(not(startsWith.bind(null, '#')));
 
     async.map(data, function(d, cb) {
-        temp.open('cert', function(err, cert) {
-            if(err) return console.error(err);
-
-            fs.writeSync(cert.fd, d);
-            fs.close(cert.fd, function(err) {
-                if(err) return console.error(err);
-
-                cb(null, x509.parseCert(cert.path));
-            });
-        });
+        cb(null, x509.parseCert(d));
     }, function(err, d) {
         if(err) return console.error(err);
 
