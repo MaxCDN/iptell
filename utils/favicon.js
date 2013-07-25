@@ -15,7 +15,7 @@ var providers = {
     'HostGator': 'https://www.hostgator.com/favicon.ico',
     'Laughing Squid': 'https://www.laughingsquid.us/favicon.ico',
     'SiteGround': 'https://www.siteground.com/favicon.ico',
-    'Media Temple (mt)': 'https://www.mediatemple.net/favicon.ico',
+    'Media Temple': 'https://www.mediatemple.net/favicon.ico',
     'Web.com': 'https://www.web.com/favicon.ico',
     'Fatcow': 'https://www.fatcow.com/favicon.ico',
     'iPage': 'https://www.ipage.com/favicon.ico',
