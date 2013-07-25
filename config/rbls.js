@@ -8,6 +8,8 @@ module.exports = [
     {name: 'Multi SURBL', dns: 'multi.surbl.org'},
     {name: 'Spam Cannibal', dns: 'bl.spamcannibal.org'},
     {name: 'dnsbl.abuse.ch', dns: 'spam.abuse.ch'},
-    {name: 'The Unsubscribe Blacklist', dns: 'ubl.unsubscore.com'},
-    {name: 'UCEPROTECT Network', dns: 'dnsbl-1.uceprotect.net'}
+    {name: 'UCEPROTECT Network', dns: 'dnsbl-1.uceprotect.net'},
+
+    // does not return true on 127.0.0.2 (used for testing)
+    {name: 'The Unsubscribe Blacklist', dns: 'ubl.unsubscore.com'}
 ];
