@@ -3,8 +3,11 @@ var rbls = require('../config/rbls');
 
 delete rbls[rbls.length - 1];
 
-getBlacklisted('127.0.0.1', []);
-getBlacklisted('foobar', []);
+
+var noResults = {message: 'No blacklist entries were found'};
+
+getBlacklisted('127.0.0.1', noResults);
+getBlacklisted('foobar', noResults);
 getBlacklisted('127.0.0.2', rbls);
 
 function getBlacklisted(ip, result) {

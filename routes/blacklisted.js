@@ -11,7 +11,8 @@ module.exports = {
         rbl(ip, config.rbls, function(err, blacklisted) {
             if(err) return response.send(400);
 
-            response.json(blacklisted);
+            response.json(blacklisted.length? blacklisted:
+                          {message: 'No blacklist entries were found'});
         });
     }
 };
