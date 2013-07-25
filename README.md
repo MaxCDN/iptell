@@ -75,10 +75,14 @@ Basically you'll need to perform the following steps:
 
 The project depends on a couple of environment variables. See `/config/index.js` for exact names. You can set these using `heroku config:set FOO=bar`. In order to enable production mode (more caching etc.), use `heroku config:set NODE_ENV=production`
 
-## Testing
+## Configuration
 
-1. npm start
-2. npm test
+In case you need to adjust the project configuration (port etc.), you can do this in two ways. You may either copy `config/config.template.js` as `config/config.js` and then tweak that. Alternatively you may set the configuration variables at ENV. You see possible variables when you run the server. It follows a certain configuration based convention. Possible environment variables set override your `config/config.js`.
+
+### Testing
+
+1. `npm start`
+2. `npm test`
 
 The tests won't run unless the server is running so remember to that before executing the tests! The tests use Jasmine as a test runner. If you don't have that installed yet, execute `npm install -g jasmine-node`.
 
