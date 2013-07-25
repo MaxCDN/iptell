@@ -10,9 +10,11 @@ exports.connect = connect;
 
 function connect(host, cb) {
     openssl.exec('s_client', {connect: host + ':443'}, function(err, buffer) {
+        if(err) return cb(err);
+
         var d = buffer.toString().split('\n---\n').filter(id);
 
-        if(d) {
+        if(d.length > 1) {
             async.map([
                 server,
                 certificateChain,
