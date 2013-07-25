@@ -35,7 +35,7 @@ function serve(err) {
     app.get('/' + prefix + '/location', routes.location.get);
     app.get('/' + prefix + '/ip', routes.ip.get);
     app.get('/' + prefix + '/blacklisted/:ip', routes.blacklisted.get);
-    app.get('/' + prefix + '/ssl/:host', routes.ssl.get);
+    app.get('/' + prefix + '/ssl', routes.ssl.get);
 
     process.on('exit', terminator);
 

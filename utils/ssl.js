@@ -10,8 +10,8 @@ exports.connect = connect;
 
 function connect(host, cb) {
     openssl.exec('s_client', {connect: host + ':443'}, function(err, buffer) {
-        if(err) return cb(err);
-
+        // err needs to be skipped in this case as we're interested only in
+        // the buffer
         var d = buffer.toString().split('\n---\n').filter(id);
 
         if(d.length > 1) {
@@ -26,6 +26,7 @@ function connect(host, cb) {
                 cb(err, toObject(d));
             });
         }
+        else cb(new Error('Not enough SSL data'));
     });
 }
 
