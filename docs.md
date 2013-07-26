@@ -41,7 +41,7 @@ If the request is successful, you should receive something like this:
 
 * GET /v1/blacklisted/{ip}
 
-If the request is successful, you should receive something like this:
+In case the given ip has been blacklisted by some RBL, you should receive a list such as the one below:
 
 {% highlight json %}
 [
@@ -52,4 +52,10 @@ If the request is successful, you should receive something like this:
 ]
 {% endhighlight %}
 
-Of course it is more likely that you will simply receive an empty list.
+If the ip has not been blacklisted, you should receive a message instead:
+
+{% highlight json %}
+{
+  "message": "No blacklist entries were found"
+}
+{% endhighlight %}
