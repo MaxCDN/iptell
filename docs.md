@@ -102,7 +102,7 @@ In case the request is successful, you should receive something like this (host=
 
 * GET /v1/ssl?name=provider
 
-In case the request is successful, you should receive something like this(name=Equifax%20Secure%20Certificate%20Authority):
+In case the request is successful, you should receive something like this (name=Equifax%20Secure%20Certificate%20Authority):
 
 {% highlight json %}
 {
