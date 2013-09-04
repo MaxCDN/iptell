@@ -17,7 +17,8 @@
     "require-dir": "~0.1.0",
     "openssl-wrapper": "~0.2.0",
     "x509": "0.0.3",
-    "request": "~2.23.0"
+    "request": "~2.23.0",
+    "user-agent-parse": "~1.0.8"
   },
   "scripts": {
     "start": "node serve.js",

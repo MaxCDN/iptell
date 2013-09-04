@@ -63,6 +63,27 @@ If the request is successful, you should receive something like this:
 
 Of course it is more likely that you will simply receive an empty list.
 
+#### User Agent
+
+```
+GET /v1/ua/{ua}
+```
+
+Remember to escape your user agent before passing it to the query!
+
+In case the request is successful, you should receive something like this:
+
+```json
+{ full: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.62 Safari/537.36',
+  name: 'chrome',
+  version: '29.0.1547.62',
+  fullName: 'chrome 29.0.1547.62',
+  os: 'OS X 10.8',
+  device_type: 'desktop' }
+```
+
+If the query fails, you will get a 400.
+
 ## Hosting
 
 The service is hosted on Heroku. Refer to their [documentation](https://devcenter.heroku.com/articles/nodejs).
