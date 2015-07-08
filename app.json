@@ -1,0 +1,7 @@
+{
+  "name": "iptell by MaxCDN",
+  "description": "ipTelligence is a service for finding out info about a domain.",
+  "repository": "https://github.com/MaxCDN/iptell",
+  "logo": "https://www.maxcdn.com/images/png/brand/maxcdn-logo.png",
+  "keywords": ["ip", "whois"]
+}

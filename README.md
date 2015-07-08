@@ -7,6 +7,8 @@ The first application is to give an IP or hostname and return the hosting provid
 
 ## Usage
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 Install and start the service. Then access it using your browser.
 
 ### Location
@@ -71,12 +73,15 @@ Remember to escape your user agent before passing it to the query!
 In case the request is successful, you should receive something like this:
 
 ```
-{ full: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.62 Safari/537.36',
-  name: 'chrome',
-  version: '29.0.1547.62',
-  fullName: 'chrome 29.0.1547.62',
-  os: 'OS X 10.8',
-  device_type: 'desktop' }
+{
+    full: 'Mozilla/5.0(Macintosh;IntelMacOSX10_8_4)AppleWebKit/537.36(KHTML,
+    likeGecko)Chrome/29.0.1547.62Safari/537.36',
+    name: 'chrome',
+    version: '29.0.1547.62',
+    fullName: 'chrome29.0.1547.62',
+    os: 'OSX10.8',
+    device_type: 'desktop'
+}
 ```
 
 If the query fails, you will get a 400.
