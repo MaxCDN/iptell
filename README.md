@@ -1,16 +1,15 @@
-# iptell.io - hello
+# iptell - hello
 
 ipTelligence is a service for finding out info about a domain.  It is a web service written in node.js.
 
 The first application is to give an IP or hostname and return the hosting providers and favicon for the OpsPanel backends section.
 
-We bootstrapped this very quickly and will make it open to add hostnames (through github).  Thanks JD.
 
 ## Usage
 
-### v1
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-The URL: http://api.iptell.io
+Install and start the service. Then access it using your browser.
 
 ### Location
 
@@ -73,13 +72,16 @@ Remember to escape your user agent before passing it to the query!
 
 In case the request is successful, you should receive something like this:
 
-```json
-{ full: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.62 Safari/537.36',
-  name: 'chrome',
-  version: '29.0.1547.62',
-  fullName: 'chrome 29.0.1547.62',
-  os: 'OS X 10.8',
-  device_type: 'desktop' }
+```
+{
+    full: 'Mozilla/5.0(Macintosh;IntelMacOSX10_8_4)AppleWebKit/537.36(KHTML,
+    likeGecko)Chrome/29.0.1547.62Safari/537.36',
+    name: 'chrome',
+    version: '29.0.1547.62',
+    fullName: 'chrome29.0.1547.62',
+    os: 'OSX10.8',
+    device_type: 'desktop'
+}
 ```
 
 If the query fails, you will get a 400.
@@ -106,11 +108,3 @@ In case you need to adjust the project configuration (port etc.), you can do thi
 2. `npm test`
 
 The tests won't run unless the server is running so remember to that before executing the tests! The tests use Jasmine as a test runner. If you don't have that installed yet, execute `npm install -g jasmine-node`.
-
-## Service AKA:
-
-* iptelligence.io
-* iptell.io
-* iptel.io
-
-(all registered with: iwantmyname.com)
